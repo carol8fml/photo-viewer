@@ -1,0 +1,7 @@
+<div *ngFor="let photo of photos">
+  <img [src]="photo.url" alt="Photo" />
+  <p>User: {{ photo.user }}</p>
+  <p>Title: {{ photo.title }}</p>
+  <p>ID: {{ photo.id }}</p>
+  <p>Description: {{ photo.description }}</p>
+</div>
