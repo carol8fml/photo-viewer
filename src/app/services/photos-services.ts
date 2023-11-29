@@ -11,7 +11,7 @@ export interface IPhoto {
 let allPhotos: IPhoto[] = [];
 
 /**
- * Recupera uma lista de fotos da API.
+ * Retrieves a list of photos from the API.
  */
 export const getPhotos = async () => {
   try {
@@ -34,8 +34,8 @@ export const getPhotos = async () => {
 };
 
 /**
- * Retorna uma foto da lista de fotos pelo seu ID.
- * @param id O ID da foto.
+ * Returns a photo from the list of photos by its ID.
+ * @param id The ID of the photo.
  */
 export const getPhotoById = (id: number): IPhoto | null => {
   const photo = allPhotos.find((p) => p.id === id);

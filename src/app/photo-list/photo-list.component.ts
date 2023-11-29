@@ -4,10 +4,14 @@ import { CommonModule } from '@angular/common';
 /** Services */
 import { IPhoto, getPhotos, getPhotoById } from '../services/photos-services';
 
+/** Libs */
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+
 @Component({
   selector: 'app-photo-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTableModule, MatIconModule],
   templateUrl: './photo-list.component.html',
   styleUrl: './photo-list.component.css',
 })
@@ -16,32 +20,32 @@ export class PhotoListComponent implements OnInit {
   selectedPhoto: IPhoto | null = null;
 
   /**
-   * Inicializa o componente e carrega as fotos.
+   * Initializes the component and loads the photos.
    */
   async ngOnInit() {
     try {
       this.photos = await getPhotos();
     } catch (error) {
-      console.error('Erro ao carregar fotos:', error);
+      console.error('Error loading photos:', error);
     }
   }
 
   /**
-   * Exibe os detalhes de uma foto específica.
+   * Displays the details of a specific photo.
    *
-   * @param id - O ID da foto para visualizar os detalhes.
+   * @param id - The ID of the photo to view the details.
    */
   viewPhotoDetails(id: number) {
     const photo = getPhotoById(id);
     if (photo) {
       this.selectedPhoto = photo;
     } else {
-      console.error('Foto não encontrada.');
+      console.error('Photo not found.');
     }
   }
 
   /**
-   * Fecha o modal de detalhes da foto.
+   * Closes the photo details modal.
    */
   closeModal() {
     this.selectedPhoto = null;
