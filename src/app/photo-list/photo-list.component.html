@@ -1,7 +1,25 @@
-<div *ngFor="let photo of photos">
-  <img [src]="photo.url" alt="Photo" />
-  <p>User: {{ photo.user }}</p>
-  <p>Title: {{ photo.title }}</p>
-  <p>ID: {{ photo.id }}</p>
-  <p>Description: {{ photo.description }}</p>
+<div class="slideshow-container">
+  <div
+    *ngFor="let photo of photos; let i = index"
+    class="all-photos"
+    [ngClass]="{ active: i === currentPhotoIndex }"
+  >
+    <img [src]="photo.url" alt="Foto" />
+    <div>
+      <p>Usuário: {{ photo.user }}</p>
+      <p>Título: {{ photo.title }}</p>
+      <p>ID: {{ photo.id }}</p>
+      <p>Descrição: {{ photo.description }}</p>
+    </div>
+  </div>
 </div>
+
+<button (click)="navigateBackward()" [disabled]="currentPhotoIndex === 0">
+  Anterior
+</button>
+<button
+  (click)="navigateForward()"
+  [disabled]="currentPhotoIndex === photos.length - 1"
+>
+  Próxima
+</button>

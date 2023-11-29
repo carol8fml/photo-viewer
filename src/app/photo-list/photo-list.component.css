@@ -1,0 +1,11 @@
+.slideshow-container {
+  display: flex;
+}
+
+.all-photos {
+  display: none;
+}
+
+.active {
+  display: block;
+}
