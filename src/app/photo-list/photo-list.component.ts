@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /** Services */
-import { IPhoto, getPhotos } from '../services/photos-services';
+import { IPhoto, getPhotos, getPhotoById } from '../services/photos-services';
 
 @Component({
   selector: 'app-photo-list',
@@ -13,30 +13,37 @@ import { IPhoto, getPhotos } from '../services/photos-services';
 })
 export class PhotoListComponent implements OnInit {
   photos: IPhoto[] = [];
-  currentPhotoIndex: number = 0;
+  selectedPhoto: IPhoto | null = null;
 
   /**
    * Inicializa o componente e carrega as fotos.
    */
   async ngOnInit() {
-    this.photos = await getPhotos();
-  }
-
-  /**
-   * Navega para a próxima foto.
-   */
-  navigateForward() {
-    if (this.currentPhotoIndex < this.photos.length - 1) {
-      this.currentPhotoIndex++;
+    try {
+      this.photos = await getPhotos();
+    } catch (error) {
+      console.error('Erro ao carregar fotos:', error);
     }
   }
 
   /**
-   * Navega para a foto anterior.
+   * Exibe os detalhes de uma foto específica.
+   *
+   * @param id - O ID da foto para visualizar os detalhes.
    */
-  navigateBackward() {
-    if (this.currentPhotoIndex > 0) {
-      this.currentPhotoIndex--;
+  viewPhotoDetails(id: number) {
+    const photo = getPhotoById(id);
+    if (photo) {
+      this.selectedPhoto = photo;
+    } else {
+      console.error('Foto não encontrada.');
     }
+  }
+
+  /**
+   * Fecha o modal de detalhes da foto.
+   */
+  closeModal() {
+    this.selectedPhoto = null;
   }
 }

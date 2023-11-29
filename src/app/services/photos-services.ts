@@ -8,6 +8,11 @@ export interface IPhoto {
   description: string;
 }
 
+let allPhotos: IPhoto[] = [];
+
+/**
+ * Recupera uma lista de fotos da API.
+ */
 export const getPhotos = async () => {
   try {
     const response = await axios.get(
@@ -20,9 +25,19 @@ export const getPhotos = async () => {
       }
     );
 
-    return response.data.photos as IPhoto[];
+    allPhotos = response.data.photos;
+    return allPhotos;
   } catch (error) {
     console.error(error);
     throw error;
   }
+};
+
+/**
+ * Retorna uma foto da lista de fotos pelo seu ID.
+ * @param id O ID da foto.
+ */
+export const getPhotoById = (id: number): IPhoto | null => {
+  const photo = allPhotos.find((p) => p.id === id);
+  return photo || null;
 };

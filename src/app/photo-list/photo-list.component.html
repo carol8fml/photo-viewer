@@ -1,25 +1,30 @@
-<div class="slideshow-container">
-  <div
-    *ngFor="let photo of photos; let i = index"
-    class="all-photos"
-    [ngClass]="{ active: i === currentPhotoIndex }"
-  >
-    <img [src]="photo.url" alt="Foto" />
-    <div>
-      <p>Usuário: {{ photo.user }}</p>
-      <p>Título: {{ photo.title }}</p>
-      <p>ID: {{ photo.id }}</p>
-      <p>Descrição: {{ photo.description }}</p>
-    </div>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let photo of photos">
+      <td>{{ photo.id }}</td>
+      <td>{{ photo.title }}</td>
+      <td>
+        <button (click)="viewPhotoDetails(photo.id)">
+          Ver Detalhes
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal" *ngIf="selectedPhoto">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2>{{ selectedPhoto.title }}</h2>
+    <img [src]="selectedPhoto.url" alt="{{ selectedPhoto.title }}">
+    <p>{{ selectedPhoto.description }}</p>
   </div>
 </div>
-
-<button (click)="navigateBackward()" [disabled]="currentPhotoIndex === 0">
-  Anterior
-</button>
-<button
-  (click)="navigateForward()"
-  [disabled]="currentPhotoIndex === photos.length - 1"
->
-  Próxima
-</button>
