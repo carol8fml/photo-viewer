@@ -1,5 +1,5 @@
 {
-  "name": "photo-api-explorer",
+  "name": "photo-viewer",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:photo-api-explorer": "node dist/photo-api-explorer/server/server.mjs"
+    "serve:ssr:photo-viewer": "node dist/photo-viewer/server/server.mjs"
   },
   "private": true,
   "dependencies": {

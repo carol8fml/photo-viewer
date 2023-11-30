@@ -13,5 +13,5 @@ import { PhotoListComponent } from '../app/photo-list/photo-list.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'photo-api-explorer';
+  title = 'photo-viewer';
 }

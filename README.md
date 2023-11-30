@@ -1,5 +1,4 @@
-# PhotoApiExplorer
-
+# PhotoViewer
 Requirements
 Before running the application, make sure you have the following technologies installed:
 
@@ -17,12 +16,12 @@ npm install -g @angular/cli
 
 ### Clone the repository
 ```Bash
-git clone git@github.com:carol8fml/photo-api-explorer.git
+git clone git@github.com:carol8fml/photo-viewer.git
 ```
 
 ### Go to the application directory
 ```Bash
-cd photo-api-explorer
+cd photo-viewer
 ```
 
 ### Install the project dependencies
