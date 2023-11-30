@@ -1,12 +1,19 @@
 /* Table Styling */
-table {
-  width: 100%;
-}
-
 th.mat-header-cell,
 td.mat-cell {
-  padding: 8px;
+  padding: 0.5rem;
   text-align: left;
+}
+
+.view-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Modal Styling */
@@ -24,11 +31,10 @@ td.mat-cell {
 
 .modal-content {
   background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  width: 60%;
-  max-width: 500px;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  max-width: 31.25rem;
 }
 
 .close-button {

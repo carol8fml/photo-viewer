@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /** Services */
@@ -49,5 +49,15 @@ export class PhotoListComponent implements OnInit {
    */
   closeModal() {
     this.selectedPhoto = null;
+  }
+
+  /**
+   * Event listener for the "Esc" key press.
+   */
+  @HostListener('document:keydown.escape')
+  onEscKeyHandler() {
+    if (this.selectedPhoto) {
+      this.closeModal();
+    }
   }
 }
